@@ -1,3 +1,9 @@
+pkcs11-proxy (0.5.0-1) unstable; urgency=medium
+
+  * debian updates
+
+ -- Smallstep Labs, Inc. <techadmin@smallstep.com> Tue, 11 Jan 2022 20:14:16 +0000
+
 pkcs11-proxy (0.4-1ubuntu4) trusty; urgency=medium
 
   * debian updates
