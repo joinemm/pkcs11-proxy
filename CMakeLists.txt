@@ -67,7 +67,7 @@ install_targets (/lib pkcs11-proxy)
 install_targets (/bin pkcs11-daemon)
 
 add_custom_command(
-   OUTPUT syscall-names.h 
+   OUTPUT syscall-names.h
    COMMAND ${CMAKE_SOURCE_DIR}/mksyscalls.sh
    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 
