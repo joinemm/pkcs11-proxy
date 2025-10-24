@@ -70,6 +70,10 @@ static CK_FUNCTION_LIST_PTR pkcs11_module = NULL;
 #define PARSE_ERROR CKR_DEVICE_ERROR
 #define PREP_ERROR  CKR_DEVICE_MEMORY
 
+/* Define TRUE and FALSE which used to be in pkcs11.h */
+#define TRUE 1
+#define FALSE 0
+
 typedef struct {
 	CK_SESSION_HANDLE id;
 	CK_SLOT_ID slot;
