@@ -9,8 +9,8 @@ This fork has the following additional features:
 - getaddrinfo support for IPv6, fallback and DNS resolution
 - TLS-PSK support to optionally encrypt communication
 - OS/X build support 
+- PKCS11 v3 support
+- EDDSA support
 
 Plus a number of important bug fixes. This version passes the SoftHSM test
 suite.
-
-An ubuntu PPA that tracks this version is ppa:leifj
