@@ -58,7 +58,7 @@ import struct
 import socket
 import logging
 import argparse
-import SocketServer
+import socketserver
 import PyKCS11 # used to get all the PKCS#11 defines
 
 default_host = "localhost"
@@ -211,7 +211,7 @@ def parse_args():
 
     return parser.parse_args()
 
-class ProxyHandler(SocketServer.StreamRequestHandler):
+class ProxyHandler(socketserver.StreamRequestHandler):
     """
     The RequestHandler class for our server.
 
@@ -228,7 +228,7 @@ class ProxyHandler(SocketServer.StreamRequestHandler):
         self.p11proxy.connect((args.connect_to_host, args.connect_to_port))
 
         self.logger = logger
-        SocketServer.BaseRequestHandler.__init__(self, *other_args, **kwargs)
+        socketserver.BaseRequestHandler.__init__(self, *other_args, **kwargs)
 
     def handle(self):
         """
@@ -257,7 +257,7 @@ class ProxyHandler(SocketServer.StreamRequestHandler):
                 self.request.sendall(length)
                 self.logger.debug("\n\nAnswer length is {}".format(length.encode('hex')))
                 self._handle_answer(struct.unpack('>L', length)[0])
-        except Exception, e:
+        except Exception as e:
             self.logger.exception("Got exception handling request from {}".format(self.client_address[0]))
             return None
 
@@ -506,7 +506,7 @@ def main():
     logger = logging.getLogger('p11proxy-mitm')
 
     # Create the server
-    server = SocketServer.TCPServer((args.listen_host, args.listen_port), \
+    server = socketserver.TCPServer((args.listen_host, args.listen_port), \
                                         ProxyHandler, \
                                         bind_and_activate=False, \
                                         )
